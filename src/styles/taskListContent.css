@@ -1,0 +1,39 @@
+.tlContentL{
+    position: relative;
+}
+
+.tlContentL:before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    position: absolute;
+    background: rgba('10', '8e', 'e9', 1);
+    margin-top: 6px;
+    margin-left: -15px;
+}
+
+.tlContentL-1::before{
+    background: rgba(16, 142, 233, 1);
+    /* background: #108ee9; */
+}
+
+.tlContentL-2::before{
+    background: rgba(16, 142, 233, 0.8);
+    /* background: #108ee9; */
+}
+
+.tlContentL-3::before{
+    background: rgba(16, 142, 233, 0.5);
+    /* background: #108ee9; */
+}
+
+.tlContentL-4::before{
+    background: rgba(16, 142, 233, 0.3);
+    /* background: #108ee9; */
+}
+
+.tlContentL-5::before{
+    background: rgba(16, 142, 233, 0.1);
+    /* background: #108ee9; */
+}
