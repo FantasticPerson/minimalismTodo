@@ -10,7 +10,7 @@
     "history": "^4.7.2",
     "js-cookie": "^2.2.0",
     "nebpay": "0.0.6",
-    "nebulas": "0.5.2",
+    "nebulas": "0.5.0",
     "qrcode": "1.2.0",
     "react": "^16.4.0",
     "react-content-loader": "3.1.2",
@@ -35,5 +35,5 @@
     "node-request": "^0.0.3",
     "react-app-rewired": "^1.5.2"
   },
-  "homepage": "https://fantasticperson.github.io/nebulascowriter"
+  "homepage": "https://fantasticperson.github.io/minimalismTodo"
 }
