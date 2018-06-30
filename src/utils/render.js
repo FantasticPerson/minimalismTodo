@@ -1,6 +1,6 @@
 export default function dataDealer(text){
-    let regArr = text.split(/\n.+ /)
-    let arr = text.match(/\n.+ /g)
+    let regArr = text.split(/\n.+#? /)
+    let arr = text.match(/\n.+#? /g)
 
     if(arr){
         for(let i=0;i<arr.length;i++){
@@ -12,8 +12,13 @@ export default function dataDealer(text){
 
     let resArr = []
     for(var i = 0;i<regArr.length;i++){
+        let matchTxt = regArr[i].match(/.+#? /)
+        let isFinish = false
+        if(matchTxt[0] && matchTxt[0].indexOf('#') >= 0){
+            isFinish = true
+        }
         let item = regArr[i]
-        let obj = {level:rangeArr[i]}
+        let obj = {level:rangeArr[i],isFinish}
         
         obj.items = calcItem(item)
         resArr.push(obj)
@@ -38,7 +43,7 @@ function calcItem(text){
 function calcSingleItem(text){
     
     let text2 = text.trim()
-    let dArr = text2.match(/[.]+ /)
+    let dArr = text2.match(/[.]+#? /)
     if(!dArr){
         return null
     }
@@ -48,9 +53,9 @@ function calcSingleItem(text){
     let resArr = []
 
     let reg1 = new RegExp(/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/)
-    let reg2 = new RegExp(/\/\/!? /)
+    let reg2 = new RegExp(/#?\/\/!? /)
 
-    let urlPattern = new RegExp(/((http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?)|(\/\/!? )/gim)
+    let urlPattern = new RegExp(/((http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?)|(#?\/\/!? )/gim)
 
     if(text2.length > 0){
         var arr = text2.split(urlPattern)
@@ -75,10 +80,16 @@ function calcSingleItem(text){
                             let context = tempStr.slice(0,index2)
                             str=str.slice(index2+url.length)
                             let type = url.indexOf('!') >= 0 ? 3 : 2
+                            // if(url.indexOf('#') >=0){
+                            //     type = type == 3 ? 4 : 5
+                            // }
                             resArr.push({type:type,content:context})
                         }
                     } else {
                         let type = url.indexOf('!') >= 0 ? 3 : 2
+                        // if(url.indexOf('#') >=0){
+                        //     type = type == 3 ? 4 : 5
+                        // }
                         resArr.push({type:type,content:str.slice(url.length)})
                         str = ''
                     }

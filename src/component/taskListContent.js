@@ -14,13 +14,17 @@ export default class TaskListContent extends Component{
         
         const content = data.map((item,i)=>{
             let marginLeft = `${20*(item.level)}px`
+            let fStyle = {}
+            if(item.isFinish){
+                fStyle={textDecoration:'line-through'}
+            }
             return <div key={i} className={`tlContentL tlContentL-${item.level > 5 ? 5 : item.level}`} style={{margin:'5px',marginLeft:marginLeft}}>
                 {item.items.map((d,i)=>{
                     let tagColor = ['','blue','orange','blue'][d.type-1]
                     if(d.type == 4){
-                        return <Tag key={i} color={tagColor}><a target="_blank" href={d.content}>{d.content}</a></Tag>
+                        return <Tag style={fStyle} key={i} color={tagColor}><a target="_blank" href={d.content}>{d.content}</a></Tag>
                     } else {
-                        return <Tag key={i} color={tagColor}>{d.content}</Tag>
+                        return <Tag style={fStyle} key={i} color={tagColor}>{d.content}</Tag>
                     }
                 })}
             </div>

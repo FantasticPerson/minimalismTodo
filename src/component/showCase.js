@@ -22,7 +22,7 @@ export default class CreateTaskList extends Component{
 
         this.timer = new Timer(this.handleValueChange.bind(this),1000)
 
-        let defaultValue = `. 事件1 // test\n.. 事件1-1 // test\n... 事件1-1-1 https://www.baidu.com\n.. 事件 1-2 //! 很重要\n. 事件2 // 事件`
+        let defaultValue = `.# 事件1(已完成) // test\n.. 事件1-1 // test\n... 事件1-1-1 https://www.baidu.com\n.. 事件 1-2 //! 很重要\n. 事件2 // 事件`
 
         let res = render(defaultValue)
         this.setState({taskData:res})
@@ -60,7 +60,7 @@ export default class CreateTaskList extends Component{
             borderRadius:'10px'
         }
 
-        let defaultValue = `. 事件1 // test\n.. 事件1-1 // test\n... 事件1-1-1 https://www.baidu.com\n.. 事件 1-2 //! 很重要\n. 事件2 // 事件`
+        let defaultValue = `.# 事件1(已完成) // test\n.. 事件1-1 // test\n... 事件1-1-1 https://www.baidu.com\n.. 事件 1-2 //! 很重要\n. 事件2 // 事件`
         
         return (
             <Modal 
